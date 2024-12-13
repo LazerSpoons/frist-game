@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1ya1lhru8xmu"
+path="res://.godot/imported/Pokemon Silver_Gold_Crystal - Surf Theme.mp3-77f236c62308b80b5f030fcb8f293e4e.mp3str"
+
+[deps]
+
+source_file="res://Pokemon Silver_Gold_Crystal - Surf Theme.mp3"
+dest_files=["res://.godot/imported/Pokemon Silver_Gold_Crystal - Surf Theme.mp3-77f236c62308b80b5f030fcb8f293e4e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

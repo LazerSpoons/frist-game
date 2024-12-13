@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=3 uid="uid://dijwkxjlkffup"]
+
+[ext_resource type="PackedScene" uid="uid://bdvkdv77fslji" path="res://addons/midi/ADSR.tscn" id="1_t4bgh"]
+[ext_resource type="Script" path="res://test.gd" id="1_vivoo"]
+[ext_resource type="PackedScene" uid="uid://cuyd1qv0pn26e" path="res://addons/midi/MidiPlayer.tscn" id="2_5dymu"]
+[ext_resource type="Texture2D" uid="uid://clt326u2wp8oh" path="res://icon.svg" id="4_l37xe"]
+[ext_resource type="Texture2D" uid="uid://dcv56wq5ta6yr" path="res://images/EMPTY_ARROW-removebg-preview.png" id="6_2qkd0"]
+[ext_resource type="AudioStream" uid="uid://i2ktqroqtk6l" path="res://MIDI/song.wav" id="6_ui6bg"]
+[ext_resource type="Script" path="res://addons/midi/MidiPlayer.gd" id="8_7amsu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y5gkb"]
+size = Vector2(156.5, 169.25)
+
+[node name="test" type="Node2D"]
+script = ExtResource("1_vivoo")
+
+[node name="ADSR" parent="." instance=ExtResource("1_t4bgh")]
+volume_db = 8.432
+
+[node name="MidiPlayer" parent="." instance=ExtResource("2_5dymu")]
+max_polyphony = null
+file = "res://MIDI/no name(1).mid"
+playing = true
+play_speed = null
+volume_db = null
+key_shift = null
+loop = null
+loop_start = null
+load_all_voices_from_soundfont = null
+soundfont = "res://MIDI/JawHarp-20200606.sf2"
+mix_target = null
+bus = null
+sequence_per_seconds = null
+
+[node name="Sprite2D" type="Sprite2D" parent="MidiPlayer"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(-2, -2)
+texture = ExtResource("4_l37xe")
+
+[node name="Left2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left2D"]
+position = Vector2(177, 388)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_y5gkb")
+
+[node name="song" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ui6bg")
+volume_db = -80.0
+
+[node name="Desync" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="MidLeft2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MidLeft2D"]
+position = Vector2(346, 391)
+shape = SubResource("RectangleShape2D_y5gkb")
+
+[node name="MidRight2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MidRight2D"]
+position = Vector2(512, 379.375)
+shape = SubResource("RectangleShape2D_y5gkb")
+
+[node name="Right2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right2D"]
+position = Vector2(680, 392)
+rotation = -1.57952
+shape = SubResource("RectangleShape2D_y5gkb")
+
+[node name="BLOCK" type="Sprite2D" parent="."]
+process_priority = -1
+process_physics_priority = -1
+position = Vector2(172, 386)
+scale = Vector2(0.612132, 1)
+texture = ExtResource("6_2qkd0")
+
+[node name="BLOCK2" type="Sprite2D" parent="."]
+process_priority = -1
+process_physics_priority = -1
+position = Vector2(347, 387)
+rotation = 4.71239
+scale = Vector2(0.601103, 0.909639)
+texture = ExtResource("6_2qkd0")
+
+[node name="BLOCK3" type="Sprite2D" parent="."]
+process_priority = -1
+process_physics_priority = -1
+position = Vector2(505, 385)
+rotation = 1.5708
+scale = Vector2(0.616728, 0.876506)
+texture = ExtResource("6_2qkd0")
+
+[node name="BLOCK4" type="Sprite2D" parent="."]
+process_priority = -1
+process_physics_priority = -1
+position = Vector2(666, 389)
+scale = Vector2(0.590073, 0.951807)
+texture = ExtResource("6_2qkd0")
+flip_h = true
+
+[node name="scoreBox" type="RichTextLabel" parent="."]
+offset_left = 715.0
+offset_top = 15.0
+offset_right = 933.0
+offset_bottom = 80.0
+text = "SCORE:"
+
+[node name="endiingztimer" type="Timer" parent="."]
+wait_time = 4.418
+
+[node name="MidiPlayer2" type="Node" parent="."]
+script = ExtResource("8_7amsu")
+file = "res://MIDI/no name(1).mid"
+volume_db = 0.0
+soundfont = "res://MIDI/JawHarp-20200606.sf2"
+
+[connection signal="midi_event" from="MidiPlayer" to="." method="_on_midi_player_midi_event"]
+[connection signal="area_entered" from="Left2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Left2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Left2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Left2D" to="." method="_on_left_2d_body_exited"]
+[connection signal="timeout" from="Desync" to="." method="_on_desync_timeout"]
+[connection signal="area_entered" from="MidLeft2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="MidLeft2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="MidLeft2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="MidRight2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="MidRight2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="MidRight2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="area_entered" from="Right2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_shape_entered" from="Right2D" to="." method="_on_area_2d_area_shape_entered"]
+[connection signal="body_entered" from="Right2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="endiingztimer" to="." method="_on_endiingztimer_timeout"]

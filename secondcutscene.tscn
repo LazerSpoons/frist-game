@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://bwt4acbmhm66j"]
+
+[ext_resource type="Script" path="res://secondcutscene.gd" id="1_f5pml"]
+[ext_resource type="Texture2D" uid="uid://cg1bk0c6b12xj" path="res://vine-black-painted-swatch.jpg" id="2_lnmhr"]
+[ext_resource type="Texture2D" uid="uid://bxq4w3xfegnlx" path="res://background.png" id="3_uneq7"]
+[ext_resource type="Texture2D" uid="uid://7365rk1l1wnw" path="res://romansoldier-removebg-preview.png" id="4_0lkud"]
+[ext_resource type="Texture2D" uid="uid://e8gv4brbh60s" path="res://CEASER-removebg-preview.png" id="5_kjp8k"]
+[ext_resource type="PackedScene" uid="uid://cdmxixpkpw6q7" path="res://dialoguebox.tscn" id="6_kw8qc"]
+[ext_resource type="Texture2D" uid="uid://basjtqg2mit42" path="res://Roblox_guest-removebg-preview.png" id="7_c12lk"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f5pml")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_lnmhr")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_uneq7")
+
+[node name="goon" type="Sprite2D" parent="background"]
+position = Vector2(1041, 463)
+scale = Vector2(1.2623, 1.1413)
+texture = ExtResource("4_0lkud")
+flip_h = true
+
+[node name="cesr" type="Sprite2D" parent="background"]
+position = Vector2(941, 460)
+scale = Vector2(0.436, 0.336)
+texture = ExtResource("5_kjp8k")
+
+[node name="Polygon2D" parent="." instance=ExtResource("6_kw8qc")]
+z_index = 2
+position = Vector2(574, 527)
+scale = Vector2(0.511893, 0.397113)
+
+[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
+show_behind_parent = true
+position = Vector2(-443.452, -88.1361)
+scale = Vector2(1.99845, 2.38863)
+texture = ExtResource("7_c12lk")
+flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+show_behind_parent = true
+z_index = 2
+position = Vector2(819, 505)
+scale = Vector2(0.995351, 1.0304)
+texture = ExtResource("7_c12lk")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

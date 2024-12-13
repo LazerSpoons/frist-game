@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvft85spnu0ny"]
+
+[ext_resource type="Script" path="res://missIndicator.gd" id="1_j1ttv"]
+[ext_resource type="PackedScene" uid="uid://kj7g0t3of8r" path="res://damage_indicator.tscn" id="2_1wl2d"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_j1ttv")
+
+[node name="damageIndicator" parent="." instance=ExtResource("2_1wl2d")]

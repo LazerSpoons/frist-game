@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://orhcw44w8s0w"]
+
+[ext_resource type="Script" path="res://newtestlmao.gd" id="1_75c62"]
+[ext_resource type="MidiResource" uid="uid://2cums3j8ymmo" path="res://midi files/Tokyo Ghoul - Unravel.mid" id="2_gii4l"]
+
+[node name="Node" type="Node"]
+process_mode = 3
+script = ExtResource("1_75c62")
+
+[node name="MidiPlayer" type="MidiPlayer" parent="."]
+midi = ExtResource("2_gii4l")
+process_mode = 3
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[connection signal="finished" from="MidiPlayer" to="." method="_on_midi_player_finished"]
+[connection signal="note" from="MidiPlayer" to="." method="_on_midi_player_note"]

@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://ben3g0lcu75uf"]
+
+[ext_resource type="Script" path="res://thevoidone.gd" id="1_20u6b"]
+[ext_resource type="Texture2D" uid="uid://cyacqwbiisjxn" path="res://images/Designer(2).jpeg" id="2_ddpyq"]
+[ext_resource type="Texture2D" uid="uid://b248j1742i38i" path="res://images/whitescren.png" id="2_wpfng"]
+[ext_resource type="PackedScene" uid="uid://cdmxixpkpw6q7" path="res://dialoguebox.tscn" id="3_5bved"]
+[ext_resource type="Texture2D" uid="uid://basjtqg2mit42" path="res://Roblox_guest-removebg-preview.png" id="4_vf0t7"]
+
+[node name="thevoidone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_20u6b")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 2
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 642.0
+texture = ExtResource("2_wpfng")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+texture = ExtResource("2_ddpyq")
+expand_mode = 1
+
+[node name="Polygon2D" parent="." instance=ExtResource("3_5bved")]
+position = Vector2(643, 433)
+scale = Vector2(0.547143, 0.428888)
+
+[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
+position = Vector2(-486.162, 20.9846)
+scale = Vector2(1.47018, 1.92585)
+texture = ExtResource("4_vf0t7")
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(905, 456)
+texture = ExtResource("4_vf0t7")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

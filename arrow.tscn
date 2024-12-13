@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bw375egh2v3a8"]
+
+[ext_resource type="Texture2D" uid="uid://bnnn65rfotl8b" path="res://_DE2323CA-5106-409E-B86D-B4DBD2C3FF15_-removebg-preview.png" id="1_2f4ri"]
+[ext_resource type="Script" path="res://arrow.gd" id="1_qfyey"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xdui"]
+size = Vector2(61.3143, 60.0001)
+
+[node name="Arrow" type="Node2D"]
+script = ExtResource("1_qfyey")
+
+[node name="fallingarrow" type="Sprite2D" parent="."]
+position = Vector2(350, 40)
+scale = Vector2(1.32432, 1.33607)
+texture = ExtResource("1_2f4ri")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="fallingarrow"]
+position = Vector2(-782, -162)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fallingarrow/CharacterBody2D"]
+position = Vector2(783.057, 162)
+shape = SubResource("RectangleShape2D_1xdui")

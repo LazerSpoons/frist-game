@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdmxixpkpw6q7"]
+
+[ext_resource type="Script" path="res://dialogueboxtext.gd" id="1_36tps"]
+[ext_resource type="Script" path="res://dialoguebox.gd" id="1_c7wyo"]
+[ext_resource type="Texture2D" uid="uid://cif7q0cl3cl1k" path="res://hadestextbox.png" id="1_gc2it"]
+[ext_resource type="FontFile" uid="uid://kwafcjhdb6sg" path="res://DalelandsUncialCondensedBold-MEyv.ttf" id="2_am0cv"]
+[ext_resource type="Script" path="res://charactertab.gd" id="5_j17h2"]
+
+[node name="Polygon2D" type="Sprite2D"]
+z_index = 1
+position = Vector2(560, 296)
+scale = Vector2(0.705714, 0.578248)
+texture = ExtResource("1_gc2it")
+script = ExtResource("1_c7wyo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = -419.0
+offset_right = 431.0
+offset_bottom = 180.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_am0cv")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "dfdf"
+script = ExtResource("1_36tps")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.05
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = -408.097
+offset_top = -110.679
+offset_right = -80.0974
+offset_bottom = -41.6791
+theme_override_fonts/normal_font = ExtResource("2_am0cv")
+theme_override_font_sizes/normal_font_size = 49
+bbcode_enabled = true
+text = "CEASER"
+script = ExtResource("5_j17h2")
+
+[node name="Timer2" type="Timer" parent="."]
+
+[node name="Timer3" type="Timer" parent="."]
+wait_time = 0.05
+
+[connection signal="timeout" from="Timer" to="RichTextLabel" method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="RichTextLabel" method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Timer3" to="RichTextLabel" method="_on_timer_2_timeout"]

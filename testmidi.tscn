@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn476rfjg7m34"]
+
+[ext_resource type="MidiResource" uid="uid://2cums3j8ymmo" path="res://midi files/Tokyo Ghoul - Unravel.mid" id="1_sqlma"]
+[ext_resource type="Script" path="res://testmidi.gd" id="2_hdbxw"]
+
+[node name="MidiPlayer" type="MidiPlayer"]
+midi = ExtResource("1_sqlma")
+script = ExtResource("2_hdbxw")
+
+[node name="Node" type="Node" parent="."]
+
+[connection signal="note" from="." to="." method="_on_note"]

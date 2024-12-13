@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdqtog76gmggr"]
+
+[ext_resource type="Texture2D" uid="uid://wume7qn8s7ak" path="res://921ebe55412a0dddda5037675e52d62e70246f74.png" id="1_3o1og"]
+[ext_resource type="Script" path="res://firstcutscene.gd" id="1_gf1n5"]
+[ext_resource type="FontFile" uid="uid://kwafcjhdb6sg" path="res://DalelandsUncialCondensedBold-MEyv.ttf" id="2_cxtwh"]
+[ext_resource type="AudioStream" uid="uid://umuvjx7pidlf" path="res://Sound Effects - Single keyboard type [FREE].mp3" id="4_q21bq"]
+
+[sub_resource type="Theme" id="Theme_nr2nx"]
+
+[node name="firstcutscene" type="AnimationPlayer"]
+script = ExtResource("1_gf1n5")
+
+[node name="blackscreen" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_nr2nx")
+texture = ExtResource("1_3o1og")
+
+[node name="optext" type="Label" parent="blackscreen"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_cxtwh")
+theme_override_font_sizes/font_size = 44
+text = "GAUL, 58 BC"
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q21bq")
+
+[node name="GAMEPLAYSWITCH" type="Timer" parent="."]
+wait_time = 5.186
+
+[connection signal="timeout" from="GAMEPLAYSWITCH" to="." method="_on_gameplayswitch_timeout"]

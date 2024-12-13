@@ -1,0 +1,82 @@
+[gd_scene load_steps=9 format=3 uid="uid://h5yklomw2y7b"]
+
+[ext_resource type="Script" path="res://worldscene.gd" id="1_aoqtf"]
+[ext_resource type="Texture2D" uid="uid://cvcco802beiu5" path="res://pixel-art-of-the-world-map-v0-yhg6z3q347h91-1.png.png" id="1_k828r"]
+[ext_resource type="FontFile" uid="uid://kwafcjhdb6sg" path="res://DalelandsUncialCondensedBold-MEyv.ttf" id="2_0pmjh"]
+[ext_resource type="Script" path="res://RichTextLabel.gd" id="3_aq5lc"]
+[ext_resource type="Texture2D" uid="uid://bkp4eqvu7ndbd" path="res://png-clipart-pixel-art-scroll-scroll-bar-miscellaneous-text-thumbnail-removebg-preview.png" id="4_dc2iy"]
+[ext_resource type="Script" path="res://france.gd" id="5_xrqyv"]
+[ext_resource type="AudioStream" uid="uid://d1ya1lhru8xmu" path="res://Pokemon Silver_Gold_Crystal - Surf Theme.mp3" id="7_hf7by"]
+[ext_resource type="AudioStream" uid="uid://0tn7w83dqir5" path="res://8bit Click Sound Effect.mp3" id="8_v0gwq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aoqtf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k828r")
+
+[node name="Button" type="Button" parent="TextureRect"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 529.0
+offset_top = 173.0
+offset_right = 582.0
+offset_bottom = 211.0
+
+[node name="france" type="Sprite2D" parent="TextureRect"]
+visible = false
+position = Vector2(448, 179)
+scale = Vector2(0.543103, 0.477654)
+texture = ExtResource("4_dc2iy")
+script = ExtResource("5_xrqyv")
+
+[node name="Label" type="Label" parent="TextureRect/france"]
+offset_left = -68.127
+offset_top = -20.9357
+offset_right = 82.873
+offset_bottom = 14.0643
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0pmjh")
+theme_override_font_sizes/font_size = 32
+text = " FRANCE"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 438.0
+offset_top = 533.0
+offset_right = 820.0
+offset_bottom = 573.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_0pmjh")
+theme_override_font_sizes/normal_font_size = 20
+text = "			CHOOSE A NATION!!"
+script = ExtResource("3_aq5lc")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_hf7by")
+volume_db = 8.914
+autoplay = true
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_v0gwq")
+volume_db = 24.0
+
+[node name="soundtimer2" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="mouse_entered" from="TextureRect/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="TextureRect/Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="TextureRect/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="soundtimer2" to="." method="_on_soundtimer_2_timeout"]

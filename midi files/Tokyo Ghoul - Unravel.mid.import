@@ -1,0 +1,14 @@
+[remap]
+
+importer="com.nlaha.godotmidi"
+type="MidiResource"
+uid="uid://2cums3j8ymmo"
+path="res://.godot/imported/Tokyo Ghoul - Unravel.mid-59f3d2ede5ade448454f613be5228109.res"
+
+[deps]
+
+source_file="res://midi files/Tokyo Ghoul - Unravel.mid"
+dest_files=["res://.godot/imported/Tokyo Ghoul - Unravel.mid-59f3d2ede5ade448454f613be5228109.res"]
+
+[params]
+

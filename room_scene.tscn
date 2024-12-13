@@ -1,0 +1,101 @@
+[gd_scene load_steps=11 format=3 uid="uid://0oebp8ahrmsk"]
+
+[ext_resource type="Texture2D" uid="uid://cg1bk0c6b12xj" path="res://vine-black-painted-swatch.jpg" id="1_aaam3"]
+[ext_resource type="Script" path="res://room_scene.gd" id="1_ngk3y"]
+[ext_resource type="Texture2D" uid="uid://8un8fx6m110e" path="res://images/bedroom.jpg" id="3_78jc2"]
+[ext_resource type="Texture2D" uid="uid://7365rk1l1wnw" path="res://romansoldier-removebg-preview.png" id="4_ngliu"]
+[ext_resource type="Texture2D" uid="uid://e8gv4brbh60s" path="res://CEASER-removebg-preview.png" id="5_8rmjb"]
+[ext_resource type="PackedScene" uid="uid://cdmxixpkpw6q7" path="res://dialoguebox.tscn" id="6_587y1"]
+[ext_resource type="Texture2D" uid="uid://ckg5mjgi2tir4" path="res://images/time machine.jpg" id="6_dmufe"]
+[ext_resource type="Texture2D" uid="uid://basjtqg2mit42" path="res://Roblox_guest-removebg-preview.png" id="7_eart6"]
+[ext_resource type="AudioStream" uid="uid://dvjrvuiee8scr" path="res://midi files/Classic Alarm Clock - Sound Effect for Editing.mp3" id="8_o186n"]
+
+[sub_resource type="Theme" id="Theme_xbigy"]
+
+[node name="roomScene" type="Node2D"]
+script = ExtResource("1_ngk3y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1180.0
+offset_top = -210.0
+offset_right = 20.0
+offset_bottom = 990.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_aaam3")
+
+[node name="background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -10.0
+offset_right = 1162.0
+offset_bottom = 660.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_78jc2")
+
+[node name="goon" type="Sprite2D" parent="background"]
+position = Vector2(1041, 463)
+scale = Vector2(1.2623, 1.1413)
+texture = ExtResource("4_ngliu")
+flip_h = true
+
+[node name="cesr" type="Sprite2D" parent="background"]
+position = Vector2(941, 460)
+scale = Vector2(0.436, 0.336)
+texture = ExtResource("5_8rmjb")
+
+[node name="Sprite2D" type="Sprite2D" parent="background"]
+position = Vector2(957, 275)
+scale = Vector2(0.25295, 0.1285)
+texture = ExtResource("6_dmufe")
+
+[node name="Button" type="Button" parent="background/Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -403.242
+offset_top = -583.658
+offset_right = 442.758
+offset_bottom = 544.342
+theme = SubResource("Theme_xbigy")
+theme_override_colors/font_color = Color(0, 0, 0, 0.0588235)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 0.0235294)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0.196078)
+
+[node name="Polygon2D" parent="." instance=ExtResource("6_587y1")]
+position = Vector2(566, 468)
+scale = Vector2(0.544286, 0.419045)
+
+[node name="Sprite2D" type="Sprite2D" parent="Polygon2D"]
+show_behind_parent = true
+position = Vector2(-443.452, -88.1361)
+scale = Vector2(1.99845, 2.38863)
+texture = ExtResource("7_eart6")
+flip_h = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="alarm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_o186n")
+
+[node name="Timer2" type="Timer" parent="."]
+
+[connection signal="pressed" from="background/Sprite2D/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
