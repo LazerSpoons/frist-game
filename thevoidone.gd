@@ -10,7 +10,32 @@ var chronoPages = [3,5,6]
 func _ready():
 	$Polygon2D.visible = false
 	$Timer.start()
-	$Polygon2D.get_child(0).dialogue = ["Huh?", "Where am I?", "I swear I was just in my room, until I touched that time machine..", "You're in the Ridge between Time", "What? Wait, who are you?", "I am Chronos, god of cats", "You seem to have stumbled upon my artifact."]
+	$Polygon2D.get_child(0).dialogue = ["Huh?",
+	 "Where am I?",
+	 "I swear I was just in my room, until I touched that time machine..", 
+	"Nowhere and everywhere.",
+	"The space between time where the past, present and future intersect.",
+	 "What? Wait, who are you?",
+	 "Greetings, I am S-T-E-V-E.",
+	"S.T.E.V.E. Your Space Time Exploration Vehicle Envoy", 
+	"You seem to have stumbled upon my artifact.",
+	"How do I go back?",
+	"Thats the problem.... lets take a look at the machine",
+	"As you can See, It's out of charge",
+	"So, am I stuck here?",
+	"Not exactly...by completing the built in game you can partially charge it.",
+	"Great! So I just have to do that?",
+	"Hold your horses.I did say partially",
+	"?",
+	"While I can control where you go, it will still bring you to the past, where you'll have to locate the machine and repeat til you can come back safely",
+	"how can I find the time machine?",
+	"u got this",
+	"??",
+	"Alr.. lets press charge and see what he was talking about",
+	"A Rhythm game? I'm lowk goated at this so...",
+	"we ball"
+		
+	]
 	$Polygon2D.get_child(2).text = "You"
 	
 
@@ -40,10 +65,11 @@ func _process(delta):
 			if not nameSaid and personTalking == 2:
 				$Polygon2D.get_child(2).text = "???"	
 			elif nameSaid and personTalking == 2:
-				$Polygon2D.get_child(2).text = "Chronos"
+				$Polygon2D.get_child(2).text = "S.T.E.V.E"
 		if len($Polygon2D.get_child(2).text) > 8:
 			$Polygon2D.get_child(2).push_font_size(20) 
-
+		if $Polygon2D.get_child(0).page >= 9:
+			$timeMachine.visible = true
 
 
 

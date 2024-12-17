@@ -19,12 +19,12 @@ func _process(delta):
 				page += 1
 				text = dialogue[page]
 				set_visible_characters(0)
-		
+	set_visible_characters(get_visible_characters()+1)	
 
 
 
 func _on_timer_timeout():
-	set_visible_characters(get_visible_characters()+1)
+	pass
 
 
 func _on_timer_2_timeout():

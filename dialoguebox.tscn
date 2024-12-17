@@ -25,7 +25,7 @@ text = "dfdf"
 script = ExtResource("1_36tps")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.005
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 offset_left = -408.097
@@ -35,7 +35,7 @@ offset_bottom = -41.6791
 theme_override_fonts/normal_font = ExtResource("2_am0cv")
 theme_override_font_sizes/normal_font_size = 49
 bbcode_enabled = true
-text = "CEASER"
+text = "placeholder"
 script = ExtResource("5_j17h2")
 
 [node name="Timer2" type="Timer" parent="."]
